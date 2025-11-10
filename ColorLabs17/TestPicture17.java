@@ -34,14 +34,18 @@ public class TestPicture17
      Picture kitty = new Picture("images/kitten2.jpg");
 
      //apic.explore();!!!!!!!!!!!!!!!!! dispalys the picture
-     ferris1.explore();
-     kitty.explore();
+     //ferris1.explore();
+     //kitty.explore();
      
      //to change color fo picture get all of the pixels!!!!!!!!!!!!!
      //makes an array of pixels
      Pixel[] pixels;
      //gets pixels from picture and assigns to pixels array
      pixels = ferris1.getPixels();
+     Pixel[] pixels1;
+     pixels1 = kitty.getPixels();
+     Pixel[] pixels2;
+     pixels2 = apic.getPixels();
     
      //how many pixels or how large array
     System.out.println("This is a large array"+pixels.length  );
@@ -63,8 +67,8 @@ public class TestPicture17
     ferris1.explore();
     
     spot.setColor(Color.yellow);
-    spot50.setColor();
-    ferris1.explore();
+    //spot50.setColor();
+    //ferris1.explore();
 /*
     pixels[17].setColor(Color.blue);
     spot.setColor(new Color(252,252,252));
@@ -73,12 +77,65 @@ public class TestPicture17
     ferris1.explore();
 /*
    // loop to access indexes of array or collection
-
+*/
     //for each loop spot  is a ?
-    for (Pixel spot : pixels)
-    System.out.println( spot );
-
-
+    int blue;
+    int red;
+    int green;
+    int rng;
+    for (Pixel spot1 : pixels){
+        //System.out.println( spot1 );
+        blue = spot1.getBlue();
+        rng = (int)(.25 * blue);
+        spot1.setBlue(rng);
+    }
+    ferris1.explore();
+    
+    int iGreen;
+    int iBlue;
+    int iRed;
+    for (Pixel spot1 : pixels1){
+        //System.out.println( spot1 );
+        green = spot1.getGreen();
+        blue = spot1.getBlue();
+        red = spot1.getRed();
+        iGreen = (int)((green - 255) * -1);
+        iBlue = (int)((blue - 255) * -1);
+        iRed = (int)((red - 255) * -1);
+        spot1.setGreen(iGreen);
+        spot1.setBlue(iBlue);
+        spot1.setRed(iRed);
+    }
+    kitty.explore();
+    int avg;
+    for (Pixel spot1 : pixels2){
+        //System.out.println( spot1 );
+        green = spot1.getGreen();
+        blue = spot1.getBlue();
+        red = spot1.getRed();
+        avg = (red + blue + green) / 3;
+        spot1.setGreen(avg);
+        spot1.setBlue(avg);
+        spot1.setRed(avg);
+    }
+    
+    apic.explore();
+    
+    
+    /*
+    int red;
+    for (Pixel spot1 : pixels){
+        //System.out.println( spot1 );
+        red = spot1.getRed();
+        rng = (int)(Math.random() * red);
+        spot1.setRed(rng);
+    }
+    ferris1.explore();
+    
+    int green;
+    int count = 0;
+    
+*/
    
  /**/
 
