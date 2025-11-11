@@ -32,6 +32,9 @@ public class TestPicture17
      Picture ferris1 = new Picture("images/2000 ferris wheel2.jpg");
      Picture moto = new Picture("images/blueMotorcycle.jpg");
      Picture kitty = new Picture("images/kitten2.jpg");
+     Picture door = new Picture("images/thruDoor.jpg");
+     Picture butterfly = new Picture("images/butterfly1.jpg");
+     Picture snowman = new Picture("images/snowman.jpg");
 
      //apic.explore();!!!!!!!!!!!!!!!!! dispalys the picture
      //ferris1.explore();
@@ -46,6 +49,12 @@ public class TestPicture17
      pixels1 = kitty.getPixels();
      Pixel[] pixels2;
      pixels2 = apic.getPixels();
+     Pixel[] pixels3;
+     pixels3 = door.getPixels();
+     Pixel[] pixels4;
+     pixels4 = butterfly.getPixels();
+     Pixel[] pixels5;
+     pixels5 = snowman.getPixels();
     
      //how many pixels or how large array
     System.out.println("This is a large array"+pixels.length  );
@@ -120,6 +129,51 @@ public class TestPicture17
     }
     
     apic.explore();
+    for (Pixel spot1 : pixels3){
+        //System.out.println( spot1 );
+        green = spot1.getGreen();
+        blue = spot1.getBlue();
+        red = spot1.getRed();
+        iGreen = (int)(green + 80);
+        iBlue = (int)(blue + 80);
+        iRed = (int)(red + 80);
+        spot1.setGreen(iGreen);
+        spot1.setBlue(iBlue);
+        spot1.setRed(iRed);
+    }
+    door.explore();
+    for (Pixel spot1 : pixels4){
+        //System.out.println( spot1 );
+        green = spot1.getGreen();
+        blue = spot1.getBlue();
+        red = spot1.getRed();
+        iGreen = (int)(green + 21);
+        iBlue = (int)(blue + 67);
+        iRed = (int)(red - 41);
+        spot1.setGreen(iGreen);
+        spot1.setBlue(iBlue);
+        spot1.setRed(iRed);
+    }
+    butterfly.explore();
+    for (Pixel spot1 : pixels5){
+        //System.out.println( spot1 );
+        green = spot1.getGreen();
+        blue = spot1.getBlue();
+        red = spot1.getRed();
+        iGreen = (int)(green);
+        iBlue = (int)(blue);
+        iRed = (int)(red);
+        if (red >= 215 && blue >= 230 && blue >=248){
+            spot1.setGreen(green - 80);
+            spot1.setBlue(blue - 80);
+            spot1.setRed(red - 80);
+        }
+        spot1.setGreen(iGreen);
+        spot1.setBlue(iBlue);
+        spot1.setRed(iRed);
+    }
+    snowman.explore();
+    
     
     
     /*
