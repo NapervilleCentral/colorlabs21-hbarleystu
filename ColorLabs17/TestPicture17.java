@@ -147,7 +147,7 @@ public class TestPicture17
         green = spot1.getGreen();
         blue = spot1.getBlue();
         red = spot1.getRed();
-        iGreen = (int)(green + 21);
+        iGreen = (int)(green + 23);
         iBlue = (int)(blue + 67);
         iRed = (int)(red - 41);
         spot1.setGreen(iGreen);
@@ -163,14 +163,11 @@ public class TestPicture17
         iGreen = (int)(green);
         iBlue = (int)(blue);
         iRed = (int)(red);
-        if (red >= 215 && blue >= 230 && blue >=248){
-            spot1.setGreen(green - 80);
-            spot1.setBlue(blue - 80);
-            spot1.setRed(red - 80);
+        if (red >= 207 && blue >= 230 && blue >=243){
+            spot1.setGreen(121);
+            spot1.setBlue(105);
+            spot1.setRed(9);
         }
-        spot1.setGreen(iGreen);
-        spot1.setBlue(iBlue);
-        spot1.setRed(iRed);
     }
     snowman.explore();
     
