@@ -36,6 +36,8 @@ public class SheparFaireyLab
          pixels = me.getPixels();
          Pixel[] pixels1;
          pixels1 = me1.getPixels();
+         Pixel[] pixels2;
+         pixels2 = me2.getPixels();
          
          int red, green, blue;
          int avg;
@@ -65,43 +67,82 @@ public class SheparFaireyLab
                 spot1.setBlue(76);
             }
         }
-         me.explore();
+         // me.explore();
          /**
           * method 2 change
           * 
           */
-         int max, min;
+         int max = 0, min = 256;
          for (Pixel spot1 : pixels1){
             green = spot1.getGreen();
             blue = spot1.getBlue();
             red = spot1.getRed();
             avg = (red + blue + green) / 3;
-            if (avg >= max){
+            if (avg>max){
+                max = avg;
+            }
+            if (avg<min){
+                min = avg;
+            }
+        }
+         for (Pixel spot1 : pixels1){
+            green = spot1.getGreen();
+            blue = spot1.getBlue();
+            red = spot1.getRed();
+            avg = (red + blue + green) / 3;
+            if (avg >= (max-min)*.75){
                 spot1.setRed(253);
                 spot1.setGreen(237);
                 spot1.setBlue(203);
             }
-            else if (avg >= max*.5){
+            else if (avg >= (max-min)*.5){
                 spot1.setRed(112);
                 spot1.setGreen(150);
                 spot1.setBlue(161);
             }
-            else if (avg >= max*.25){
+            else if (avg >= (max-min)*.25){
                 spot1.setRed(217);
                 spot1.setGreen(22);
                 spot1.setBlue(33);
             }
-            else if (avg >= 0){
+            else if (avg >= min){
                 spot1.setRed(0);
                 spot1.setGreen(51);
                 spot1.setBlue(76);
             }
         }
-         me1.explore();
+         // me1.explore();
          /**
           * custom color palette
           */
-
+        me2.explore();
+         for (Pixel spot1 : pixels2){
+            green = spot1.getGreen();
+            blue = spot1.getBlue();
+            red = spot1.getRed();
+            avg = (red + blue + green) / 3;
+            if (avg >= 191.25){
+                spot1.setRed(175);
+                spot1.setGreen(164);
+                spot1.setBlue(217);
+            }
+            else if (avg >= 127.5){
+                spot1.setRed(50);
+                spot1.setGreen(16);
+                spot1.setBlue(177);
+            }
+            else if (avg >= 63.75){
+                spot1.setRed(67);
+                spot1.setGreen(47);
+                spot1.setBlue(144);
+            }
+            else if (avg >= 0){
+                spot1.setRed(14);
+                spot1.setGreen(1);
+                spot1.setBlue(65);
+            }
+        }
+        me2.explore();
          
     }//main       
 }//class
