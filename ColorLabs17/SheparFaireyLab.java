@@ -115,7 +115,8 @@ public class SheparFaireyLab
          /**
           * custom color palette
           */
-        me2.explore();
+        /*
+         me2.explore();
          for (Pixel spot1 : pixels2){
             green = spot1.getGreen();
             blue = spot1.getBlue();
@@ -142,7 +143,98 @@ public class SheparFaireyLab
                 spot1.setBlue(65);
             }
         }
+        me2.write("images/SFtry1.jpg");
+        */
+       /*
+        for (Pixel spot1 : pixels2){
+            green = spot1.getGreen();
+            blue = spot1.getBlue();
+            red = spot1.getRed();
+            avg = (red + blue + green) / 3;
+            if (avg >= 191.25){
+                spot1.setRed(192);
+                spot1.setGreen(188);
+                spot1.setBlue(197);
+            }
+            else if (avg >= 127.5){
+                spot1.setRed(124);
+                spot1.setGreen(103);
+                spot1.setBlue(153);
+            }
+            else if (avg >= 63.75){
+                spot1.setRed(75);
+                spot1.setGreen(45);
+                spot1.setBlue(115);
+            }
+            else if (avg >= 0){
+                spot1.setRed(18);
+                spot1.setGreen(1);
+                spot1.setBlue(41);
+            }
+        }
+        me2.write("images/SFtry2.jpg");
+         */
+        /*
+        for (Pixel spot1 : pixels2){
+            green = spot1.getGreen();
+            blue = spot1.getBlue();
+            red = spot1.getRed();
+            avg = (red + blue + green) / 3;
+            if (avg >= 177.25){
+                spot1.setRed(192);
+                spot1.setGreen(188);
+                spot1.setBlue(197);
+            }
+            else if (avg >= 127.5){
+                spot1.setRed(124);
+                spot1.setGreen(103);
+                spot1.setBlue(153);
+            }
+            else if (avg >= 63.75){
+                spot1.setRed(75);
+                spot1.setGreen(45);
+                spot1.setBlue(115);
+            }
+            else if (avg >= 0){
+                spot1.setRed(18);
+                spot1.setGreen(1);
+                spot1.setBlue(41);
+            }
+        }
+        me2.write("images/SFtry3.jpg");
+        */
+       me2.explore();
+       for (Pixel spot1 : pixels2){
+            green = spot1.getGreen();
+            blue = spot1.getBlue();
+            red = spot1.getRed();
+            avg = (red + blue + green) / 3;
+            if (avg >= 177.25){
+                spot1.setRed(192);
+                spot1.setGreen(188);
+                spot1.setBlue(197);
+            }
+            else if (avg >= 144 && avg <= 150){
+                spot1.setRed(163);
+                spot1.setGreen(129);
+                spot1.setBlue(208);
+            }
+            else if (avg >= 127.5){
+                spot1.setRed(124);
+                spot1.setGreen(103);
+                spot1.setBlue(153);
+            }
+            else if (avg >= 63.75){
+                spot1.setRed(75);
+                spot1.setGreen(45);
+                spot1.setBlue(115);
+            }
+            else if (avg >= 0){
+                spot1.setRed(18);
+                spot1.setGreen(1);
+                spot1.setBlue(41);
+            }
+        }
         me2.explore();
-         
     }//main       
 }//class
