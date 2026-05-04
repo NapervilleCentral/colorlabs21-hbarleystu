@@ -209,12 +209,12 @@ public class SheparFaireyLab
             blue = spot1.getBlue();
             red = spot1.getRed();
             avg = (red + blue + green) / 3;
-            if (avg >= 177.25){
+            if (avg >= 189){
                 spot1.setRed(192);
                 spot1.setGreen(188);
                 spot1.setBlue(197);
             }
-            else if (avg >= 144 && avg <= 150){
+            else if (avg >= 135 && avg <= 148 && red > 160 && red < 183 && green < 130 && green > 124 ){
                 spot1.setRed(163);
                 spot1.setGreen(129);
                 spot1.setBlue(208);
@@ -235,6 +235,6 @@ public class SheparFaireyLab
                 spot1.setBlue(41);
             }
         }
-        me2.explore();
+        me2.write("images/SFtry4.jpg");
     }//main       
 }//class
