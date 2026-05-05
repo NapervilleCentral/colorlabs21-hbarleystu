@@ -32,7 +32,7 @@ public class SheparFaireyLab
          Picture me1 = new Picture("images/cool.png");
          Picture me2 = new Picture("images/cool.png");
          
-         Pixel[] pixels;
+              
          pixels = me.getPixels();
          Pixel[] pixels1;
          pixels1 = me1.getPixels();

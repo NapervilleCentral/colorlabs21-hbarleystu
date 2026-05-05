@@ -11,8 +11,10 @@ import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
 public class TestPicture17
 {
+   public static Picture mirror = new Picture("images\\skarmy.jpg");
    public static Picture apic = new Picture("images\\skarmy.jpg");
    public static  Picture canvas = new Picture("images\\canvas.jpg");
+   public static  Picture temple = new Picture("images\\temple.jpg");
     /**
      * main method, to test the picture
      *
@@ -38,10 +40,13 @@ public class TestPicture17
     // Picture butterfly = new Picture("images/butterfly1.jpg");
     // Picture snowman = new Picture("images/snowman.jpg");
 
-    mirrorVertical(apic);
-     apic.explore();
-     copytoCanvas(apic,canvas);
+    mirrorVertical(mirror);
+     mirror.explore();
+     copytoCanvas(mirror,canvas);
      canvas.explore();
+    // templeMirror(temple);
+     //temple.explore();
+     
      //!!!!!!!!!!!!!!!!! dispalys the picture
      //ferris1.explore();
      //kitty.explore();
@@ -245,6 +250,24 @@ public class TestPicture17
 
     /**/
   }//main
+  public static void templeMirror(Picture apic){
+      int width = apic.getWidth();
+      int mirrorPoint = (width/2)+5;
+      Pixel leftPixel = null;
+      Pixel rightPixel = null;
+      
+      //loop through all the rows
+      for(int y = 0; y < 96; y++){
+          
+          //loop from 0 to the middle (mirror point)
+          for (int x = 0; x < mirrorPoint; x++){
+              leftPixel = apic.getPixel(x,y);
+              rightPixel = apic.getPixel(width -1 -x,y);
+              rightPixel.setColor(leftPixel.getColor());
+          }
+          
+      }
+  }
   /**
    * method to mirror abound a vertical line in the middle
    * of the picture based on width
@@ -267,17 +290,31 @@ public class TestPicture17
           
       }
   }
+  public static void greySet(Picture apic){
+      Pixel[] pix;
+      pix = apic.getPixels();
+      int avg, red, blue, green;
+      for(Pixel spot : pix){
+          red = spot.getRed();
+          blue = spot.getBlue();
+          green = spot.getGreen();
+          avg = (red + blue + green)/3;
+          
+      }
+  }
   /**
    * add two int to the params and place you want target to go onto the canvas
    */
+  
   public static void copytoCanvas(Picture source, Picture target){
+      //recursive copy to a x,y on the source
       Pixel sourcePixel = null;
       Pixel targetPixel = null;
       
-      //loop through the columns (targetX is starting point on Canvas)
+      //loop through the columns (targetX is starting point on Canvas) source+=2   (larger sourcex= sourcex +.5)
       for (int sourceX = 0, targetX = 0; sourceX<source.getWidth(); sourceX++, targetX++){
           
-          //loop thru the rows
+          //loop thru the rows                                          source+=2  (larger sourcey= sourcey +.5)
           for (int sourceY = 0, targetY = 0; sourceY<source.getHeight(); sourceY++, targetY++){
               sourcePixel = source.getPixel(sourceX,sourceY);
               targetPixel = target.getPixel(targetX,targetY);
