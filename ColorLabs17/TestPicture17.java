@@ -293,13 +293,16 @@ public class TestPicture17
   public static void greySet(Picture apic){
       Pixel[] pix;
       pix = apic.getPixels();
-      int avg, red, blue, green;
+      int avg, red, blue, green, count = 0;
       for(Pixel spot : pix){
           red = spot.getRed();
           blue = spot.getBlue();
           green = spot.getGreen();
           avg = (red + blue + green)/3;
-          
+          spot.setRed(avg);
+          spot.setBlue(avg);
+          spot.setGreen(avg);
+          count++;
       }
   }
   /**
