@@ -12,7 +12,10 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
 public class TestPicture17
 {
    public static Picture mirror = new Picture("images\\skarmy.jpg");
-   public static Picture apic = new Picture("images\\skarmy.jpg");
+   public static Picture grey = new Picture("images\\skarmy.jpg");
+   public static Picture reg = new Picture("images\\skarmy.jpg");
+   public static Picture cPic = new Picture("images\\skarmy.jpg");
+   public static Picture holyPic = new Picture("images\\skarmy.jpg");
    public static  Picture canvas = new Picture("images\\canvas.jpg");
    public static  Picture temple = new Picture("images\\temple.jpg");
     /**
@@ -39,10 +42,15 @@ public class TestPicture17
     // Picture door = new Picture("images/thruDoor.jpg");
     // Picture butterfly = new Picture("images/butterfly1.jpg");
     // Picture snowman = new Picture("images/snowman.jpg");
-
+    copyKatie(reg,canvas,0,0);
     mirrorVertical(mirror);
-     mirror.explore();
-     copytoCanvas(mirror,canvas);
+     copyKatie(mirror,canvas,200,0);
+     greySet(grey);
+     copyKatie(grey,canvas,400,0);
+     cChange(cPic);
+     copyKatie(cPic,canvas,0,240);
+     holySet(holyPic);
+     copyKatie(holyPic,canvas,200,240);
      canvas.explore();
     // templeMirror(temple);
      //temple.explore();
@@ -250,6 +258,67 @@ public class TestPicture17
 
     /**/
   }//main
+  public static void rSet(Picture apic){
+      
+  }
+  public static void cChange(Picture apic){
+      Pixel[] pixelso;
+      pixelso = apic.getPixels();
+      int avg, red, blue, green, count = 0;
+      for (Pixel spot1 : pixelso){
+            
+            green = spot1.getGreen();
+            blue = spot1.getBlue();
+            red = spot1.getRed();
+            avg = (red + blue + green) / 3;
+            if (avg >= 189){
+                spot1.setRed(192);
+                spot1.setGreen(188);
+                spot1.setBlue(197);
+            }
+            else if (avg >= 135 && avg <= 148 && red > 160 && red < 183 && green < 130 && green > 124 ){
+                spot1.setRed(163);
+                spot1.setGreen(129);
+                spot1.setBlue(208);
+            }
+            else if (avg >= 127.5){
+                spot1.setRed(124);
+                spot1.setGreen(103);
+                spot1.setBlue(153);
+            }
+            else if (avg >= 63.75){
+                spot1.setRed(75);
+                spot1.setGreen(45);
+                spot1.setBlue(115);
+            }
+            else if (avg >= 0){
+                spot1.setRed(18);
+                spot1.setGreen(1);
+                spot1.setBlue(41);
+            }
+        }
+  }
+  public static void copyKatie( Picture sourcePic, Picture targetPic, int xt, int yt)
+{
+    Pixel sourcePix = null;
+    Pixel targetPix = null;
+    //width of the source must be <= to the canvas I am
+    //going to copy to
+    for (int sourceX = 0, targetX = xt;
+    sourceX<sourcePic.getWidth();
+    sourceX++, targetX ++)
+    {
+        for (int sourceY = 0, targetY = yt;
+        sourceY<sourcePic.getHeight();
+        sourceY++, targetY ++)
+        {
+            //set the target pix color of the source pix
+            sourcePix = sourcePic.getPixel(sourceX,sourceY);
+            targetPix = targetPic.getPixel(targetX,targetY);
+            targetPix.setColor(sourcePix.getColor());
+        }//loop
+    }//loop
+}//end of copyKatie 
   public static void templeMirror(Picture apic){
       int width = apic.getWidth();
       int mirrorPoint = (width/2)+5;
@@ -291,10 +360,10 @@ public class TestPicture17
       }
   }
   public static void greySet(Picture apic){
-      Pixel[] pix;
-      pix = apic.getPixels();
+      Pixel[] pixels;
+      pixels = apic.getPixels();
       int avg, red, blue, green, count = 0;
-      for(Pixel spot : pix){
+      for(Pixel spot : pixels){
           red = spot.getRed();
           blue = spot.getBlue();
           green = spot.getGreen();
@@ -302,6 +371,21 @@ public class TestPicture17
           spot.setRed(avg);
           spot.setBlue(avg);
           spot.setGreen(avg);
+          count++;
+      }
+  }
+  public static void holySet(Picture apic){
+      Pixel[] pixels;
+      pixels = apic.getPixels();
+      int avg, red, blue, green, count = 0, mult = 3;
+      for(Pixel spot : pixels){
+          red = spot.getRed();
+          blue = spot.getBlue();
+          green = spot.getGreen();
+          avg = (red + blue + green)/3;
+          spot.setRed(red*mult);
+          spot.setBlue(blue*mult);
+          spot.setGreen(green*mult);
           count++;
       }
   }
