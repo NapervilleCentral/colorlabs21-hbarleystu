@@ -16,6 +16,8 @@ public class TestPicture17
    public static Picture reg = new Picture("images\\skarmy.jpg");
    public static Picture cPic = new Picture("images\\skarmy.jpg");
    public static Picture holyPic = new Picture("images\\skarmy.jpg");
+   public static Picture rPic = new Picture("images\\skarmy.jpg");
+   public static Picture regu = new Picture("images\\skarmy.jpg");
    public static  Picture canvas = new Picture("images\\canvas.jpg");
    public static  Picture temple = new Picture("images\\temple.jpg");
     /**
@@ -35,6 +37,8 @@ public class TestPicture17
      holySet(holyPic);
      rotate(holyPic);
      copyKatie(holyPic,canvas,200,240);
+     copyKatie(regu,canvas,400,240);
+     smaller(rPic,regu);
      canvas.explore();
     // templeMirror(temple);
      //temple.explore();
@@ -45,7 +49,7 @@ public class TestPicture17
     Pixel sourcePixel = null;
     Pixel targetPixel = null;
 
-    for (int x = 0; x < apic.getWidth(); x++)
+      for (int x = 0; x < apic.getWidth(); x++)
     {
         for (int y = 0; y < apic.getHeight(); y++)
         {
@@ -55,8 +59,45 @@ public class TestPicture17
         }
     }
   }
-  public static void rSet(Picture apic){
-      
+  public static void smaller(Picture apic, Picture reg){
+    
+    Pixel sourcePixel = null;
+    Pixel targetPixel = null;
+      for (int x = 0; x < apic.getWidth(); x+=2)
+    {
+        for (int y = 0; y < apic.getHeight(); y+=2)
+        {
+            sourcePixel = reg.getPixel(x, y);
+            targetPixel = apic.getPixel(x/2, y/2);
+            targetPixel.setColor(sourcePixel.getColor());
+            
+        }
+    }
+    copyKatie(apic,canvas,400,240);
+    
+    if (apic.getWidth()/2> 50){
+        Picture rec = new Picture(apic.getWidth()/2, apic.getHeight()/2);
+        smaller(rec,apic);
+        /**
+        for (int x = 0; x < rec.getWidth(); x+=2)
+        {
+            for (int y = 0; y < rec.getHeight(); y+=2)
+            {
+                sourcePixel = apic.getPixel(x, y);
+                targetPixel = rec.getPixel(x/2, y/2);
+                targetPixel.setColor(sourcePixel.getColor());
+            
+            }
+        }
+        copyKatie(rec,canvas,400,240);
+        smaller(rec,apic);
+        */
+    }
+    else{
+        return;
+    }
+    
+     
   }
   public static void cChange(Picture apic){
       Pixel[] pixelso;
