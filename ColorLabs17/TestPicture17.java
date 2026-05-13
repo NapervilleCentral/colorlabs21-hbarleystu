@@ -38,6 +38,7 @@ public class TestPicture17
      copyKatie(holyPic,canvas,200,240);
      smaller(rPic);
      canvas.explore();
+     canvas.write("images\\Final.jpg");
     // templeMirror(temple);
      //temple.explore();
   
